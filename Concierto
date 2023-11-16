@@ -1,0 +1,58 @@
+# Ejercicio 1. Algoritmo de taquilla de concierto
+
+# Declaramos las variables
+costo_zona1 = 2000
+costo_zona2 = 1000
+costo_zona3 = 700
+descuento_platino = 500
+descuento_oro = 300
+descuento_plata = 200
+
+# Inicializamos las variables
+venta_total = 0
+
+# Bucle para procesar a todos los asistentes
+while True:
+    # Pedimos los datos del asistente
+    nombre = input("Ingrese el nombre del asistente: ")
+    zona = input("Ingrese la zona del boleto: ")
+    dia = input("Ingrese el día de la semana: ")
+    cupon = input("¿Tiene cupón? (S/N): ")
+
+    # Calculamos el costo del boleto
+    costo_base = 0
+    if zona == "1":
+        costo_base = costo_zona1
+    elif zona == "2":
+        costo_base = costo_zona2
+    elif zona == "3":
+        costo_base = costo_zona3
+
+    # Aplicamos el descuento del cupón, si es que aplica
+    if cupon == "S":
+        if dia in ["lunes", "martes", "miércoles", "jueves"]:
+            if cupon == "Platino":
+                costo = costo_base - descuento_platino
+            elif cupon == "Oro":
+                costo = costo_base - descuento_oro
+            elif cupon == "Plata":
+                costo = costo_base - descuento_plata
+        else:
+            costo = costo_base
+    else:
+        costo = costo_base
+
+    # Acumulamos la venta total
+    venta_total += costo
+
+    # Imprimimos el resultado
+    print("Nombre del asistente:", nombre)
+    print("Costo del boleto:", costo)
+
+    # Preguntamos si hay más clientes
+    continuar = input("¿Hay otro cliente? (S/N): ")
+    if continuar == "N":
+        break
+
+# Imprimimos la venta total
+print("Venta total:", venta_total)
