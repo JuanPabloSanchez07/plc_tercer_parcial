@@ -1,0 +1,28 @@
+# Ejercicio 2. Juego de azar
+
+# Importamos la función randint()
+from random import randint
+
+# Generamos un número aleatorio entre 1 y 10
+numero_aleatorio = randint(1, 10)
+
+# Inicializamos las variables
+intentos = 0
+ganado = False
+
+# Bucle principal del juego
+while not ganado and intentos < 3:
+    # Pedimos el número al jugador
+    numero_jugador = int(input("Adivina el número (entre 1 y 10): "))
+
+    # Comparamos el número del jugador con el número aleatorio
+    if numero_jugador == numero_aleatorio:
+        ganado = True
+    else:
+        intentos += 1
+
+# Reportamos el resultado del juego
+if ganado:
+    print("¡Felicidades! Adivinaste el número en {} intentos.".format(intentos))
+else:
+    print("Lo siento, perdiste. El número correcto era {}.".format(numero_aleatorio))
